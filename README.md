@@ -57,7 +57,7 @@ In the build folder, use this command to run docker image.
 ![Diagram of cache block](./doc/demo.gif)
 
 - **UX and Perceived Performance**  
-    - Make this card grid user interface conform to user's mental model and visceral reaction, by using proper animation and indicator.
+    - Make this card grid user interface conform to user's mental model and visceral reaction, by using proper animation and indicator.
     - Take perceived performance in count, by giving instant feedback and gradual progression.
 
 - **Data Cache**  
