@@ -67,12 +67,20 @@ export function requestCardsFailure() {
  * @returns {object} 
  */
 export function fetchCards(firstPageToFetch) {
-  
+
   return (dispatch, getState) => {
 
     // const totalCount = getState().viewer.totalCount;
-    
+
     const params = `${ENDPOINT_URL}&page=${parseInt(firstPageToFetch / PAGES_PER_BATCH, 10)}&perPage=${CARDS_PER_BATCH}`
+
+    // const fetchPosts = reddit => dispatch => {
+    //   dispatch(requestPosts(reddit))
+    //   return fetch(`https://www.reddit.com/r/${reddit}.json`)
+    //     .then(response => response.json())
+    //     .then(json => dispatch(receivePosts(reddit, json)))
+    //     .catch(error => dispatch(failPosts(error)))
+    // }
 
     return fetch(
       params,
@@ -82,13 +90,13 @@ export function fetchCards(firstPageToFetch) {
       })
       .then(
         response => {
-        // if (!response.ok) throw (response);
-        // console.log(response);
-        const totalCount = response.headers.get('X-Total-Count');
-        dispatch(setTotalCount(totalCount))
-        dispatch(requestCards(firstPageToFetch, totalCount));  //
-        dispatch(requestStatusReset())
-        return response.json();
+          if (!response.ok) throw (response);
+          // console.log(response);
+          const totalCount = response.headers.get('X-Total-Count');
+          dispatch(setTotalCount(totalCount))
+          dispatch(requestCards(firstPageToFetch, totalCount));  //
+          dispatch(requestStatusReset())
+          return response.json();
         }
       )
       .then(json => {

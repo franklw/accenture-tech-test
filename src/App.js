@@ -6,6 +6,7 @@ import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 import CardScreen from './containers/CardScreenContainer'
 import CardDrawer from './containers/CardDrawerContainer'
 import Paginator from './containers/PaginatorContainer';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const generateClassName = createGenerateClassName();
 const jss = create(jssPreset());
@@ -14,11 +15,13 @@ class App extends Component {
   render() {
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
+
       <div className="App">
         <CardScreen />
         <Paginator />
         <CardDrawer />
       </div>
+
     </JssProvider>
     );
   }
